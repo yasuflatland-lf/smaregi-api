@@ -36,7 +36,7 @@ sourceCompatibility = '1.8'
 // Temporally library publish method.
 // When it becomes stable, should be published to Maven repository.
 group = 'jp.creollc'
-version = '0.1'
+version = '0.2'
 
 publishing {
     publications {
