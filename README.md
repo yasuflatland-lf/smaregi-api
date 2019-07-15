@@ -14,7 +14,7 @@ Smaregi API version below complies Extenal Interface specifications (POS) docume
 
 | Smaregi API version | this library version |
 | :--- | :--- |
-| 3.10.0 | 0.1 |  
+| 3.10.0 | 0.2 |  
 
 ## Usage
 For the detailed usage, please see [SmaregiClientRealTest.groovy](https://github.com/yasuflatland-lf/smaregi-api/blob/develop/src/test/groovy/jp/creollc/smaregi/impl/SmaregiClientRealTest.groovy) The basic samples are as below:
@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'jp.creollc', name: 'smaregi-api', version: '0.1'
+    compile group: 'jp.creollc', name: 'smaregi-api', version: '0.2'
 }
 ```
 
