@@ -1,12 +1,15 @@
 package jp.creollc.smaregi
 
+import groovy.json.StringEscapeUtils
 import jp.creollc.smaregi.RefRequestBuilder
 import jp.creollc.smaregi.SmaregiRequest
 import jp.creollc.smaregi.api.category.constants.CategoryConstants
 import jp.creollc.smaregi.api.product.constants.ProductConstants
 import jp.creollc.smaregi.constants.SmaregiConstants
 import jp.creollc.smaregi.util.JsonUtil
+import spock.lang.IgnoreIf
 import spock.lang.Specification
+import jp.creollc.smaregi.test.util.TestUtil
 
 import java.security.InvalidParameterException
 
@@ -21,17 +24,27 @@ class RefRequestBuilderTest extends Specification {
         thrown(InvalidParameterException.class)
     }
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "RefRequestBuilder test"() {
         when:
         SmaregiRequest request = RefRequestBuilder.builder()
                 .conditions("key1", "param1", "key2", "param2")
                 .build();
-        def params = JsonUtil.toJSON(request.getParams());
-
+        def params =  StringEscapeUtils.unescapeJava(JsonUtil.toJSON(request.getParams()))
+        def expected = $/"{
+  "conditions" : [ {
+    "key1" : "param1"
+  }, {
+    "key2" : "param2"
+  } ],
+  "limit" : 0,
+  "page" : 1
+}"/$
         then:
-        params == '\"{\\n  \\"conditions\\" : [ {\\n    \\"key1\\" : \\"param1\\"\\n  }, {\\n    \\"key2\\" : \\"param2\\"\\n  } ],\\n  \\"limit\\" : 0,\\n  \\"page\\" : 1\\n}\"'
+        params.replace(TestUtil.LTM, "\n") == expected.replace(TestUtil.LTM, "\n")
     }
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "Builder conditions Test"() {
         when:
         List<Map<String, String>> conditions = new ArrayList() {
@@ -56,13 +69,22 @@ class RefRequestBuilderTest extends Specification {
                 .limit(500)
                 .page(1)
                 .build();
-        def params = JsonUtil.toJSON(request.getParams());
-        def expected = '\"{\\n  \\"conditions\\" : [ {\\n    \\"categoryId\\" : \\"1\\"\\n  }, {\\n    \\"productName like\\" : \\"%沖縄%\\"\\n  } ],\\n  \\"limit\\" : 500,\\n  \\"page\\" : 1,\\n  \\"table_name\\" : \\"Product\\"\\n}\"'
-
+        def params = StringEscapeUtils.unescapeJava(JsonUtil.toJSON(request.getParams()))
+        def expected = $/"{
+  "conditions" : [ {
+    "categoryId" : "1"
+  }, {
+    "productName like" : "%沖縄%"
+  } ],
+  "limit" : 500,
+  "page" : 1,
+  "table_name" : "Product"
+}"/$
         then:
-        params == expected
+        params.replace(TestUtil.LTM, "\n") == expected.replace(TestUtil.LTM, "\n")
     }
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "Builder condition Test"() {
         when:
 
@@ -73,13 +95,22 @@ class RefRequestBuilderTest extends Specification {
                 .limit(500)
                 .page(1)
                 .build();
-        def params = JsonUtil.toJSON(request.getParams());
-        def expected = '\"{\\n  \\"conditions\\" : [ {\\n    \\"categoryId\\" : \\"1\\"\\n  }, {\\n    \\"productName like\\" : \\"%沖縄%\\"\\n  } ],\\n  \\"limit\\" : 500,\\n  \\"page\\" : 1,\\n  \\"table_name\\" : \\"Product\\"\\n}\"'
-
+        def params = StringEscapeUtils.unescapeJava(JsonUtil.toJSON(request.getParams()))
+        def expected = $/"{
+  "conditions" : [ {
+    "categoryId" : "1"
+  }, {
+    "productName like" : "%沖縄%"
+  } ],
+  "limit" : 500,
+  "page" : 1,
+  "table_name" : "Product"
+}"/$
         then:
-        params == expected
+        params.replace(TestUtil.LTM, "\n") == expected.replace(TestUtil.LTM, "\n")
     }
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "Builder field and order Test"() {
         when:
         SmaregiRequest request = RefRequestBuilder.builder()
@@ -94,11 +125,19 @@ class RefRequestBuilderTest extends Specification {
                 .page(1)
                 .build();
 
-        def params = JsonUtil.toJSON(request.getParams());
-        def expected = '\"{\\n  \\"fields\\" : [ \\"categoryId\\", \\"categoryName\\" ],\\n  \\"conditions\\" : [ {\\n    \\"categoryName like\\" : \\"%沖縄%\\"\\n  } ],\\n  \\"order\\" : [ \\"categoryId desc\\", \\"categoryName desc\\" ],\\n  \\"limit\\" : 500,\\n  \\"page\\" : 1,\\n  \\"table_name\\" : \\"Category\\"\\n}\"'
-
+        def params = StringEscapeUtils.unescapeJava(JsonUtil.toJSON(request.getParams()))
+        def expected = $/"{
+  "fields" : [ "categoryId", "categoryName" ],
+  "conditions" : [ {
+    "categoryName like" : "%沖縄%"
+  } ],
+  "order" : [ "categoryId desc", "categoryName desc" ],
+  "limit" : 500,
+  "page" : 1,
+  "table_name" : "Category"
+}"/$
         then:
-        params == expected
+        params.replace(TestUtil.LTM, "\n") == expected.replace(TestUtil.LTM, "\n")
     }
 
 }

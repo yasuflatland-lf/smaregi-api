@@ -1,11 +1,15 @@
 package jp.creollc.smaregi
 
+import groovy.json.StringEscapeUtils
 import jp.creollc.smaregi.api.UpdData
+import jp.creollc.smaregi.test.util.TestUtil
 import jp.creollc.smaregi.util.JsonUtil
+import spock.lang.IgnoreIf
 import spock.lang.Specification
 
 class UpdDataBuilderTest extends Specification {
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "UpdDataBuilderBase.getUpdDataIndex Test" () {
         when:
         List<UpdData> updDatas = UpdDataBuilder.builder()
@@ -14,7 +18,7 @@ class UpdDataBuilderTest extends Specification {
                 .updData("tableb", "key4", "value4")
                 .updData("tablea", "key5", "value5")
                 .build();
-        def json = JsonUtil.toJSON(updDatas);
+        def params = StringEscapeUtils.unescapeJava(JsonUtil.toJSON(updDatas))
         def expected = $/[ {
   "rows" : [ {
     "key1" : "value1",
@@ -31,8 +35,7 @@ class UpdDataBuilderTest extends Specification {
   } ],
   "table_name" : "tableb"
 } ]/$
-
         then:
-        json == expected
+        params.replace(TestUtil.LTM, "\n") == expected.replace(TestUtil.LTM, "\n")
     }
 }

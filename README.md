@@ -1,5 +1,5 @@
 # Smaregi API
-[![Build Status](https://travis-ci.org/yasuflatland-lf/smaregi-api.svg?branch=master)](https://travis-ci.org/yasuflatland-lf/smaregi-api) [![Coverage Status](https://coveralls.io/repos/github/yasuflatland-lf/smaregi-api/badge.svg)](https://coveralls.io/github/yasuflatland-lf/smaregi-api)
+[![Build Status](https://travis-ci.org/yasuflatland-lf/smaregi-api.svg?branch=master)](https://travis-ci.org/yasuflatland-lf/smaregi-api) [![Build status](https://ci.appveyor.com/api/projects/status/3q021gg5w5jfphvk/branch/master?svg=true)](https://ci.appveyor.com/project/yasuflatland-lf/smaregi-api/branch/master) [![Coverage Status](https://coveralls.io/repos/github/yasuflatland-lf/smaregi-api/badge.svg?branch=master)](https://coveralls.io/github/yasuflatland-lf/smaregi-api?branch=master)
 
 
 Smaregi REST API Java wrapper with simple JSON mappings.
@@ -14,7 +14,7 @@ Smaregi API version below complies Extenal Interface specifications (POS) docume
 
 | Smaregi API version | this library version |
 | :--- | :--- |
-| 3.10.0 | 0.1 |  
+| 3.10.0 | 0.2 |  
 
 ## Usage
 For the detailed usage, please see [SmaregiClientRealTest.groovy](https://github.com/yasuflatland-lf/smaregi-api/blob/develop/src/test/groovy/jp/creollc/smaregi/impl/SmaregiClientRealTest.groovy) The basic samples are as below:
@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'jp.creollc', name: 'smaregi-api', version: '0.1'
+    compile group: 'jp.creollc', name: 'smaregi-api', version: '0.2'
 }
 ```
 
