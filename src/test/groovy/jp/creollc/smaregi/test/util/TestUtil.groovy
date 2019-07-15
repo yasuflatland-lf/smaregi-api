@@ -4,6 +4,7 @@ import jp.creollc.smaregi.constants.SmaregiConstants
 
 class TestUtil {
     static def DS = System.getProperty("file.separator");
+    static def LTM = System.lineSeparator()
 
     // Credentials for ClientBase API
     static def X_ACCESS_TOKEN

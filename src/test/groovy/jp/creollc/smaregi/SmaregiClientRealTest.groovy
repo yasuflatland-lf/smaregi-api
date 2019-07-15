@@ -1,22 +1,18 @@
 package jp.creollc.smaregi
 
 import groovy.json.JsonSlurper
-import jp.creollc.smaregi.api.category.constants.CategoryConstants
 import jp.creollc.smaregi.api.UpdData
 import jp.creollc.smaregi.api.UpdRow
+import jp.creollc.smaregi.api.category.constants.CategoryConstants
 import jp.creollc.smaregi.api.product.constants.ProductConstants
 import jp.creollc.smaregi.api.stock.constants.StockConstants
 import jp.creollc.smaregi.api.store.constants.StoreConstants
 import jp.creollc.smaregi.api.transaction.constants.TransactionDetailConstants
 import jp.creollc.smaregi.api.transaction.constants.TransactionHeadConstants
 import jp.creollc.smaregi.constants.SmaregiConstants
-import jp.creollc.smaregi.test.util.TestUtil
-import jp.creollc.smaregi.util.JsonUtil
 import jp.creollc.smaregi.util.SmaregiDateTime
 import spock.lang.Ignore
 import spock.lang.Specification
-
-import java.security.InvalidParameterException
 
 /**
  * Smaregi API Real API call test use case
