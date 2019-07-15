@@ -7,6 +7,7 @@ import jp.creollc.smaregi.api.category.constants.CategoryConstants
 import jp.creollc.smaregi.api.product.constants.ProductConstants
 import jp.creollc.smaregi.constants.SmaregiConstants
 import jp.creollc.smaregi.util.JsonUtil
+import spock.lang.IgnoreIf
 import spock.lang.Specification
 import jp.creollc.smaregi.test.util.TestUtil
 
@@ -23,6 +24,7 @@ class RefRequestBuilderTest extends Specification {
         thrown(InvalidParameterException.class)
     }
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "RefRequestBuilder test"() {
         when:
         SmaregiRequest request = RefRequestBuilder.builder()
@@ -42,6 +44,7 @@ class RefRequestBuilderTest extends Specification {
         params.replace(TestUtil.LTM, "\n") == expected.replace(TestUtil.LTM, "\n")
     }
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "Builder conditions Test"() {
         when:
         List<Map<String, String>> conditions = new ArrayList() {
@@ -81,6 +84,7 @@ class RefRequestBuilderTest extends Specification {
         params.replace(TestUtil.LTM, "\n") == expected.replace(TestUtil.LTM, "\n")
     }
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "Builder condition Test"() {
         when:
 
@@ -106,6 +110,7 @@ class RefRequestBuilderTest extends Specification {
         params.replace(TestUtil.LTM, "\n") == expected.replace(TestUtil.LTM, "\n")
     }
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "Builder field and order Test"() {
         when:
         SmaregiRequest request = RefRequestBuilder.builder()

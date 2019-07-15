@@ -4,10 +4,12 @@ import groovy.json.StringEscapeUtils
 import jp.creollc.smaregi.api.UpdData
 import jp.creollc.smaregi.test.util.TestUtil
 import jp.creollc.smaregi.util.JsonUtil
+import spock.lang.IgnoreIf
 import spock.lang.Specification
 
 class UpdDataBuilderTest extends Specification {
 
+    @IgnoreIf({ System.getProperty("os.name").contains("windows") })
     def "UpdDataBuilderBase.getUpdDataIndex Test" () {
         when:
         List<UpdData> updDatas = UpdDataBuilder.builder()
