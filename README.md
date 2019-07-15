@@ -1,5 +1,5 @@
 # Smaregi API
-[![Build Status](https://travis-ci.org/yasuflatland-lf/smaregi-api.svg?branch=master)](https://travis-ci.org/yasuflatland-lf/smaregi-api) [![Build status](https://ci.appveyor.com/api/projects/status/amno3uaps0146s00?svg=true)](https://ci.appveyor.com/project/yasuflatland-lf/smaregi-api) [![Coverage Status](https://coveralls.io/repos/github/yasuflatland-lf/smaregi-api/badge.svg?branch=master)](https://coveralls.io/github/yasuflatland-lf/smaregi-api?branch=master)
+[![Build Status](https://travis-ci.org/yasuflatland-lf/smaregi-api.svg?branch=master)](https://travis-ci.org/yasuflatland-lf/smaregi-api) [![Build status](https://ci.appveyor.com/api/projects/status/3q021gg5w5jfphvk/branch/master?svg=true)](https://ci.appveyor.com/project/yasuflatland-lf/smaregi-api/branch/master) [![Coverage Status](https://coveralls.io/repos/github/yasuflatland-lf/smaregi-api/badge.svg?branch=master)](https://coveralls.io/github/yasuflatland-lf/smaregi-api?branch=master)
 
 
 Smaregi REST API Java wrapper with simple JSON mappings.
